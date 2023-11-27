@@ -10,7 +10,7 @@ row_count = count_csv_rows(file_path)
 selected_lines = random_line_numbers(row_count, 3)
 
 selected_urls = []
-with open(file_path, 'r', newline='', encoding='utf-8') as file:
+with open(file_path, "r", newline="", encoding="utf-8") as file:
     reader = csv.reader(file)
     for line_number, row in enumerate(reader):
         if line_number in selected_lines:
@@ -19,6 +19,6 @@ with open(file_path, 'r', newline='', encoding='utf-8') as file:
 render_urls = convert_to_publish_urls(selected_urls)
 
 # Chromedriverのパス
-chromedriver_path = 'C:/Users/varyu/Desktop/development/twitter/.venv/Lib/site-packages/chromedriver_binary/chromedriver.exe'
+chromedriver_path = "C:/Users/varyu/Desktop/development/twitter/.venv/Lib/site-packages/chromedriver_binary/chromedriver.exe"
 
 capture_tweet_images(render_urls, chromedriver_path)

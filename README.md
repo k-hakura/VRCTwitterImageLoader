@@ -7,7 +7,7 @@
 コード整形にはRUffを採用しています。
 ```shell
 # formatter を実行
-ruff format .
+$ rye run ruff format .
 # linter を実行
-ruff check . --fix
+$ rye run ruff check . --fix
 ```

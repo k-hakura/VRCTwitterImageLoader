@@ -7,12 +7,15 @@ from PIL import Image
 from io import BytesIO
 import time
 
+
 def capture_tweet_images(converted_urls, chromedriver_path):
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
 
     for index, render_url in enumerate(converted_urls):
-        with webdriver.Chrome(service=Service(chromedriver_path), options=options) as driver:
+        with webdriver.Chrome(
+            service=Service(chromedriver_path), options=options
+        ) as driver:
             driver.get(render_url)
 
             WebDriverWait(driver, 10).until(
@@ -47,4 +50,3 @@ def capture_tweet_images(converted_urls, chromedriver_path):
 
             # 加工後の画像を保存
             cropped_img.save(f"src/twitter/images/cropped_screenshot_{index}.png")
-            
