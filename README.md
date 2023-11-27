@@ -4,6 +4,10 @@
 
 このプロジェクトはRyeで管理されています。
 
+```shell
+$ rye run python src/twitter/twitter_image.py
+```
+
 コード整形にはRUffを採用しています。
 ```shell
 # formatter を実行
