@@ -1,4 +1,5 @@
 import csv
+import platform
 import chromedriver_binary_sync
 from scripts.dataloader import count_csv_rows, random_line_numbers
 from scripts.image_url import convert_to_publish_urls
@@ -19,14 +20,14 @@ with open(file_path, "r", newline="", encoding="utf-8") as file:
 
 render_urls = convert_to_publish_urls(selected_urls)
 
-# Chromedriverのパスを取得
+# OSに基づいてChromedriverのパスを設定
 chromedriver_binary_sync.download(download_dir='./src/twitter/chromedriver/')
 
-# # windows
-# chromedriver_path = "./src/twitter/chromedriver/chromedriver.exe"
+if platform.system() == 'Windows':
+    chromedriver_path = "./src/twitter/chromedriver/chromedriver.exe"
+else:
+    chromedriver_path = "./src/twitter/chromedriver/chromedriver"
 
-# linux
-chromedriver_path = "./src/twitter/chromedriver/chromedriver"
 
 # レンダリング
 capture_tweet_images(render_urls, chromedriver_path)
