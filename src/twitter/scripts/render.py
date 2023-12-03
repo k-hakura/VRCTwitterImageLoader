@@ -29,7 +29,7 @@ def capture_tweet_images(converted_urls, chromedriver_path):
             time.sleep(5)
 
             # スクロールする高さを設定
-            scroll_height = 750
+            scroll_height = 1370
             driver.execute_script(f"window.scrollTo(0, {scroll_height});")
 
             # スクリーンショットをPNG形式のバイナリデータとして取得

@@ -1,6 +1,7 @@
 import csv
+from get_chrome_driver import GetChromeDriver
 from scripts.dataloader import count_csv_rows, random_line_numbers
-from scripts.image_url import convert_to_publish_urls  # noqa: E402
+from scripts.image_url import convert_to_publish_urls
 from scripts.render import capture_tweet_images
 
 
@@ -18,7 +19,10 @@ with open(file_path, "r", newline="", encoding="utf-8") as file:
 
 render_urls = convert_to_publish_urls(selected_urls)
 
-# Chromedriverのパス
-chromedriver_path = "C:/Users/varyu/Desktop/development/twitter/.venv/Lib/site-packages/chromedriver_binary/chromedriver.exe"
+# Chromedriverのパスを取得
+get_driver = GetChromeDriver()
+chromedriver_path = get_driver.install()
+chromedriver_path = chromedriver_path + str("/chromedriver.exe")
 
+# レンダリング
 capture_tweet_images(render_urls, chromedriver_path)
