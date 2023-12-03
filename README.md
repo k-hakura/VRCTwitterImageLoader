@@ -2,9 +2,14 @@
 
 現在作成中。
 
-このプロジェクトはRyeで管理されています。
+このプロジェクトは[Rye](https://rye-up.com/)で管理されています。
 
 ```shell
+$ git clone https://github.com/VarYUvrc/VRCTwitterImageLoader.git
+$ cd VRCTwitterImageLoader
+$ rye sync
+
+# local実行テスト
 $ rye run python src/twitter/twitter_image.py
 ```
 
