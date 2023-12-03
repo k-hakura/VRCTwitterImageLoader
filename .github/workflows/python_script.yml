@@ -35,7 +35,7 @@ jobs:
 
     - name: Run Python Script
       run: |
-        python twitter/src/twitter/twitter_image.py
+        python src/twitter/twitter_image.py
 
     - name: Upload Screenshots as Artifacts
       uses: actions/upload-artifact@v2
