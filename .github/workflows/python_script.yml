@@ -36,8 +36,6 @@ jobs:
     - name: Run Python Script
       run: |
         python twitter/src/twitter/twitter_image.py
-      env:
-        CHROMEDRIVER_PATH: ${{ steps.setup-chromedriver.outputs.chromedriver-path }}
 
     - name: Upload Screenshots as Artifacts
       uses: actions/upload-artifact@v2
