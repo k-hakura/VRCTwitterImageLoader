@@ -2,6 +2,8 @@ name: Python Script Execution
 
 on:
   workflow_dispatch:  # 手動実行用のトリガー
+  schedule:
+    - cron: '0 19 * * *' # UTC時間で19時（日本時間で翌朝4時）
 
 jobs:
   run-python-script:
