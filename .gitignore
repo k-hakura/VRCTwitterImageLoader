@@ -13,4 +13,4 @@ wheels/
 *.png
 
 # chromedriver
-chromedriver/
+chromedriver.exe
