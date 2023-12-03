@@ -38,7 +38,7 @@ jobs:
         rye run python src/twitter/twitter_image.py
 
     - name: Upload Screenshots as Artifacts
-      uses: actions/upload-page-artifact@v1
+      uses: actions/upload-pages-artifact@v1
       with:
         path: src/twitter
 
