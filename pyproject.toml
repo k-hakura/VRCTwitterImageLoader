@@ -13,7 +13,7 @@ dependencies = [
     "chromedriver-binary-sync>=0.2.2",
 ]
 readme = "README.md"
-requires-python = ">= 3.11"
+requires-python = ">= 3.9"
 
 [build-system]
 requires = ["hatchling"]

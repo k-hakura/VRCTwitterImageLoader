@@ -17,9 +17,11 @@ colorama==0.4.6
 comm==0.2.0
 debugpy==1.8.0
 decorator==5.1.1
+exceptiongroup==1.2.0
 executing==2.0.1
 h11==0.14.0
 idna==3.5
+importlib-metadata==6.9.0
 ipykernel==6.26.0
 ipython==8.18.0
 jedi==0.19.1
@@ -51,6 +53,8 @@ tornado==6.3.3
 traitlets==5.13.0
 trio==0.23.1
 trio-websocket==0.11.1
+typing-extensions==4.8.0
 urllib3==2.1.0
 wcwidth==0.2.12
 wsproto==1.2.0
+zipp==3.17.0

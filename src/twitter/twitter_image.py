@@ -20,8 +20,8 @@ with open(file_path, "r", newline="", encoding="utf-8") as file:
 render_urls = convert_to_publish_urls(selected_urls)
 
 # Chromedriverのパスを取得
-chromedriver_binary_sync.download(download_dir='./chromedriver/')
-chromedriver_path = "./chromedriver/chromedriver.exe"
+chromedriver_binary_sync.download(download_dir='./src/twitter/chromedriver/')
+chromedriver_path = "./src/twitter/chromedriver/chromedriver.exe"
 
 # レンダリング
 capture_tweet_images(render_urls, chromedriver_path)
