@@ -1,0 +1,48 @@
+name: Python Script Execution
+
+on:
+  workflow_dispatch:  # 手動実行用のトリガー
+
+jobs:
+  run-python-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.11'
+    
+    - name: Install Chrome
+      run: |
+        sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        sudo apt update
+        sudo apt-get install google-chrome-stable
+
+    - name: Install Dependencies
+      run: |
+        pip install hatch
+        hatch run install
+
+    - name: Install Chromedriver
+      uses: nanasess/setup-chromedriver@v1
+      with:
+        chromedriver-version: '119.0.6045.105.0'
+
+    - name: Run Python Script
+      run: |
+        python twitter/src/twitter/twitter_image.py
+      env:
+        CHROMEDRIVER_PATH: ${{ steps.setup-chromedriver.outputs.chromedriver-path }}
+
+    - name: Upload Screenshots as Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: screenshots
+        path: |
+          src/twitter/images/cropped_screenshot_0.png
+          src/twitter/images/cropped_screenshot_1.png
+          src/twitter/images/cropped_screenshot_2.png

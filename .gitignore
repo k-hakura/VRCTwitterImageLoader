@@ -11,3 +11,6 @@ wheels/
 
 # huge-data-file
 *.png
+
+# chromedriver
+chromedriver/
