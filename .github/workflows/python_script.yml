@@ -38,10 +38,17 @@ jobs:
         rye run python src/twitter/twitter_image.py
 
     - name: Upload Screenshots as Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-page-artifact@v1
       with:
-        name: screenshots
-        path: |
-          src/twitter/images/cropped_screenshot_0.png
-          src/twitter/images/cropped_screenshot_1.png
-          src/twitter/images/cropped_screenshot_2.png
+        path: src/twitter
+
+  deploy:
+    needs: run-python-script
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      pages: write
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/deploy-pages@v2
