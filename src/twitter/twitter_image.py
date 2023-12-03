@@ -12,9 +12,9 @@ row_count = count_csv_rows(file_path)
 image_num = 10
 selected_lines = random_line_numbers(row_count, image_num)
 
-# ユニークなURLの種類の数が5つになるまで繰り返す
+# ユニークなURLの種類の数が規定数になるまで繰り返す
 unique_urls = set()
-while len(unique_urls) < 5:
+while len(unique_urls) < image_num:
     row_count = count_csv_rows(file_path)
     selected_lines = random_line_numbers(row_count, image_num)
 
