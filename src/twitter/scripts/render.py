@@ -43,8 +43,8 @@ def capture_tweet_images(converted_urls, chromedriver_path):
 
             # 左右ピクセルをカット
             left = 20
-            top = 1015
-            right = width - 40
+            top = 1020
+            right = width - 35
             bottom = height
             cropped_img = img.crop((left, top, right, bottom))
 
