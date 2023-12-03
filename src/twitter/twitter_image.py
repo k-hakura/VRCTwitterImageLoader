@@ -21,7 +21,12 @@ render_urls = convert_to_publish_urls(selected_urls)
 
 # Chromedriverのパスを取得
 chromedriver_binary_sync.download(download_dir='./src/twitter/chromedriver/')
-chromedriver_path = "./src/twitter/chromedriver/chromedriver.exe"
+
+# # windows
+# chromedriver_path = "./src/twitter/chromedriver/chromedriver.exe"
+
+# linux
+chromedriver_path = "./src/twitter/chromedriver/chromedriver"
 
 # レンダリング
 capture_tweet_images(render_urls, chromedriver_path)
