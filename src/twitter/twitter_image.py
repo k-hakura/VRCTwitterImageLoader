@@ -1,5 +1,5 @@
 import csv
-from get_chrome_driver import GetChromeDriver
+import chromedriver_binary_sync
 from scripts.dataloader import count_csv_rows, random_line_numbers
 from scripts.image_url import convert_to_publish_urls
 from scripts.render import capture_tweet_images
@@ -20,9 +20,8 @@ with open(file_path, "r", newline="", encoding="utf-8") as file:
 render_urls = convert_to_publish_urls(selected_urls)
 
 # Chromedriverのパスを取得
-get_driver = GetChromeDriver()
-chromedriver_path = get_driver.install()
-chromedriver_path = chromedriver_path + str("/chromedriver.exe")
+chromedriver_binary_sync.download(download_dir='./chromedriver/')
+chromedriver_path = "./chromedriver/chromedriver.exe"
 
 # レンダリング
 capture_tweet_images(render_urls, chromedriver_path)
