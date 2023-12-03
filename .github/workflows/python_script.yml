@@ -9,13 +9,7 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v2
-
-    - name: Install Chrome
-      run: |
-        sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-        sudo apt update
-        sudo apt-get install google-chrome-stable
+      uses: actions/checkout@v3
 
     - name: Install Rye
       uses: baptiste0928/cargo-install@v2
@@ -28,9 +22,15 @@ jobs:
       run: |
         rye sync
 
+    - name: Install Chrome
+      run: |
+        sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        sudo apt update
+        sudo apt-get install google-chrome-stable
+
     - name: Run Python Script
       run: |
-        python src/twitter/twitter_image.py
+        rye run python src/twitter/twitter_image.py
 
     - name: Upload Screenshots as Artifacts
       uses: actions/upload-artifact@v2
