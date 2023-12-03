@@ -22,10 +22,16 @@ jobs:
         sudo apt update
         sudo apt-get install google-chrome-stable
 
+    - name: Install Rye
+            uses: baptiste0928/cargo-install@v2
+            with:
+              crate: rye
+              git: https://github.com/mitsuhiko/rye
+              branch: main
+
     - name: Install Dependencies
       run: |
-        pip install hatch
-        hatch run install
+        rye sync
 
     - name: Install Chromedriver
       uses: nanasess/setup-chromedriver@v1
