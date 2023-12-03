@@ -9,13 +9,14 @@ from scripts.render import capture_tweet_images
 # ツイートURLをランダムで抽出
 file_path = "src/twitter/data/urls_orig_date.csv"
 row_count = count_csv_rows(file_path)
-selected_lines = random_line_numbers(row_count, 5)
+image_num = 10
+selected_lines = random_line_numbers(row_count, image_num)
 
 # ユニークなURLの種類の数が5つになるまで繰り返す
 unique_urls = set()
 while len(unique_urls) < 5:
     row_count = count_csv_rows(file_path)
-    selected_lines = random_line_numbers(row_count, 5)
+    selected_lines = random_line_numbers(row_count, image_num)
 
     selected_urls = []
     with open(file_path, "r", newline="", encoding="utf-8") as file:
