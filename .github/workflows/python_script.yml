@@ -23,11 +23,11 @@ jobs:
         sudo apt-get install google-chrome-stable
 
     - name: Install Rye
-            uses: baptiste0928/cargo-install@v2
-            with:
-              crate: rye
-              git: https://github.com/mitsuhiko/rye
-              branch: main
+      uses: baptiste0928/cargo-install@v2
+      with:
+        crate: rye
+        git: https://github.com/mitsuhiko/rye
+        branch: main
 
     - name: Install Dependencies
       run: |
