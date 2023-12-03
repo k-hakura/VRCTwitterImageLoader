@@ -40,7 +40,7 @@ jobs:
     - name: Upload Screenshots as Artifacts
       uses: actions/upload-pages-artifact@v1
       with:
-        path: src/twitter
+        path: src/twitter/pages
 
   deploy:
     needs: run-python-script

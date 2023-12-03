@@ -29,7 +29,7 @@ def capture_tweet_images(converted_urls, chromedriver_path):
             time.sleep(5)
 
             # スクロールする高さを設定
-            scroll_height = 1370
+            scroll_height = 750
             driver.execute_script(f"window.scrollTo(0, {scroll_height});")
 
             # スクリーンショットをPNG形式のバイナリデータとして取得
@@ -41,12 +41,12 @@ def capture_tweet_images(converted_urls, chromedriver_path):
             # 画像のサイズ取得
             width, height = img.size
 
-            # 左右30ピクセルをカット
-            left = 10
+            # 左右20ピクセルをカット
+            left = 20
             top = 0
-            right = width - 40
+            right = width - 20
             bottom = height
             cropped_img = img.crop((left, top, right, bottom))
 
             # 加工後の画像を保存
-            cropped_img.save(f"src/twitter/images/cropped_screenshot_{index}.png")
+            cropped_img.save(f"src/twitter/pages/images/cropped_screenshot_{index}.png")
