@@ -1,7 +1,7 @@
 [project]
 name = "VRCTwitterImageLoader"
 version = "0.1.0"
-description = "Add your description here"
+description = "Upload Twitter images to GitHub Pages for VRChat"
 authors = [
     { name = "VarYU", email = "varyu.vrc@gmail.com" }
 ]
