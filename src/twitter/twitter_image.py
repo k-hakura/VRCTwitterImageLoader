@@ -9,16 +9,17 @@ from scripts.render import capture_tweet_images
 # ツイートURLをランダムで抽出
 file_path = "src/twitter/data/urls_orig_date.csv"
 row_count = count_csv_rows(file_path)
-image_num = 10
-selected_lines = random_line_numbers(row_count, image_num)
+image_num = 10 # 画像取得数
+max_attempts = 100  # 最大試行回数
+attempts = 0
 
 # ユニークなURLの種類の数が規定数になるまで繰り返す
 unique_urls = set()
-while len(unique_urls) < image_num:
-    row_count = count_csv_rows(file_path)
+while len(unique_urls) < image_num and attempts < max_attempts:
+    attempts += 1
     selected_lines = random_line_numbers(row_count, image_num)
-
     selected_urls = []
+
     with open(file_path, "r", newline="", encoding="utf-8") as file:
         reader = csv.reader(file)
         for line_number, row in enumerate(reader):
