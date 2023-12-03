@@ -28,6 +28,11 @@ jobs:
         sudo apt update
         sudo apt-get install google-chrome-stable
 
+    - name: Install Japanese Fonts
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y fonts-ipafont
+
     - name: Run Python Script
       run: |
         rye run python src/twitter/twitter_image.py
