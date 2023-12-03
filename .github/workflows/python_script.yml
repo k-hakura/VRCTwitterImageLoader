@@ -33,11 +33,6 @@ jobs:
       run: |
         rye sync
 
-    - name: Install Chromedriver
-      uses: nanasess/setup-chromedriver@v1
-      with:
-        chromedriver-version: '119.0.6045.105.0'
-
     - name: Run Python Script
       run: |
         python twitter/src/twitter/twitter_image.py
