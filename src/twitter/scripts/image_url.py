@@ -1,10 +1,13 @@
-import urllib.parse
+import urllib.request
+import json
 
 
-def convert_to_publish_urls(urls):
-    converted_urls = []
-    base_url = "https://publish.twitter.com/?"
-    for url in urls:
-        params = {"query": url, "widget": "Tweet"}
-        converted_urls.append(base_url + urllib.parse.urlencode(params))
-    return converted_urls
+def get_tweet_embedcode(tweet_url):
+    try:
+        with urllib.request.urlopen(
+            f"https://publish.twitter.com/oembed?url={tweet_url}"
+        ) as url:
+            data = json.loads(url.read().decode())
+            return data["html"]
+    except BaseException:
+        return ""

@@ -2,8 +2,7 @@ import csv
 import platform
 import chromedriver_binary_sync
 from scripts.dataloader import count_csv_rows, random_line_numbers
-from scripts.image_url import convert_to_publish_urls
-from scripts.render import capture_tweet_images
+from scripts.html_render import save_html_as_png
 
 
 # ツイートURLをランダムで抽出
@@ -27,8 +26,6 @@ while len(unique_urls) < image_num and attempts < max_attempts:
                 selected_urls.append(row[0])
                 unique_urls.add(row[0])
 
-render_urls = convert_to_publish_urls(selected_urls)
-
 # OSに基づいてChromedriverのパスを設定
 chromedriver_binary_sync.download(download_dir="./src/twitter/chromedriver/")
 
@@ -39,4 +36,4 @@ else:
 
 
 # レンダリング
-capture_tweet_images(render_urls, chromedriver_path)
+save_html_as_png(selected_urls, chromedriver_path)
