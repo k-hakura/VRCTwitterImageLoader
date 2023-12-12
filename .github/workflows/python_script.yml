@@ -37,12 +37,12 @@ jobs:
 
     - name: Run Python Script
       run: |
-        rye run python src/twitter/twitter_image.py
+        rye run python src/VRCTwitterImageLoader/twitter_image.py
 
     - name: Upload Screenshots as Artifacts
       uses: actions/upload-pages-artifact@v1
       with:
-        path: src/twitter/pages
+        path: src/VRCTwitterImageLoader/pages
 
   deploy:
     needs: run-python-script
