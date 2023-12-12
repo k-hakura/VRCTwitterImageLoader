@@ -10,7 +10,7 @@ $ cd VRCTwitterImageLoader
 $ rye sync
 
 # local実行テスト
-$ rye run python src/twitter/twitter_image.py
+$ rye run python src/VRCTwitterImageLoader/twitter_image.py
 ```
 
 コード整形にはRUffを採用しています。

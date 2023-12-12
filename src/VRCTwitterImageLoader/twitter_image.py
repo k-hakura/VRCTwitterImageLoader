@@ -6,7 +6,7 @@ from scripts.html_render import save_html_as_png
 
 
 # ツイートURLをランダムで抽出
-file_path = "src/twitter/data/urls_orig_date.csv"
+file_path = "src/VRCTwitterImageLoader/data/urls_orig_date.csv"
 row_count = count_csv_rows(file_path)
 image_num = 10 # 画像取得数
 max_attempts = 100  # 最大試行回数
@@ -27,12 +27,12 @@ while len(unique_urls) < image_num and attempts < max_attempts:
                 unique_urls.add(row[0])
 
 # OSに基づいてChromedriverのパスを設定
-chromedriver_binary_sync.download(download_dir="./src/twitter/chromedriver/")
+chromedriver_binary_sync.download(download_dir="./src/VRCTwitterImageLoader/chromedriver/")
 
 if platform.system() == "Windows":
-    chromedriver_path = "./src/twitter/chromedriver/chromedriver.exe"
+    chromedriver_path = "./src/VRCTwitterImageLoader/chromedriver/chromedriver.exe"
 else:
-    chromedriver_path = "./src/twitter/chromedriver/chromedriver"
+    chromedriver_path = "./src/VRCTwitterImageLoader/chromedriver/chromedriver"
 
 
 # レンダリング

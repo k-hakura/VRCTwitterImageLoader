@@ -49,4 +49,4 @@ def capture_tweet_images(converted_urls, chromedriver_path):
             cropped_img = img.crop((left, top, right, bottom))
 
             # 加工後の画像を保存
-            cropped_img.save(f"src/twitter/pages/images/cropped_screenshot_{index}.png")
+            cropped_img.save(f"src/VRCTwitterImageLoader/pages/images/cropped_screenshot_{index}.png")
