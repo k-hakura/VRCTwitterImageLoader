@@ -14,6 +14,7 @@ wheels/
 
 # chromedriver
 chromedriver.exe
+*.chromedriver
 
 # often change file
 *tweet.html
