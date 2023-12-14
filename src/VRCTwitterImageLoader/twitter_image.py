@@ -34,6 +34,8 @@ if platform.system() == "Windows":
 else:
     chromedriver_path = "./src/VRCTwitterImageLoader/chromedriver/chromedriver"
 
+# URL失効時のログ確認用
+print(selected_urls)
 
 # レンダリング
 save_html_as_png(selected_urls, chromedriver_path)
