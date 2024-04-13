@@ -17,7 +17,7 @@ jobs:
       uses: baptiste0928/cargo-install@v3
       with:
         crate: rye
-        git: https://github.com/mitsuhiko/rye
+        git: https://github.com/astral-sh/rye
         branch: main
 
     - name: Install Dependencies
@@ -40,7 +40,7 @@ jobs:
         rye run python src/VRCTwitterImageLoader/twitter_image.py
 
     - name: Upload Screenshots as Artifacts
-      uses: actions/upload-pages-artifact@v4
+      uses: actions/upload-pages-artifact@v3
       with:
         path: src/VRCTwitterImageLoader/pages
 
