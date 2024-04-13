@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Install Rye
-      uses: baptiste0928/cargo-install@v2
+      uses: baptiste0928/cargo-install@v3
       with:
         crate: rye
         git: https://github.com/mitsuhiko/rye
@@ -40,7 +40,7 @@ jobs:
         rye run python src/VRCTwitterImageLoader/twitter_image.py
 
     - name: Upload Screenshots as Artifacts
-      uses: actions/upload-pages-artifact@v1
+      uses: actions/upload-pages-artifact@v4
       with:
         path: src/VRCTwitterImageLoader/pages
 
