@@ -39,8 +39,14 @@ jobs:
       run: |
         rye run python src/VRCTwitterImageLoader/twitter_image.py
 
+    - name: Fix permissions  # deployでArtifactを読み込むために必要
+      run: |
+        chmod -c -R +rX src/VRCTwitterImageLoader/pages | while read line; do
+          echo "::warning title=Invalid file permissions automatically fixed::$line"
+        done
+
     - name: Upload Screenshots as Artifacts
-      uses: actions/upload-pages-artifact@v1
+      uses: actions/upload-pages-artifact@v3
       with:
         path: src/VRCTwitterImageLoader/pages
         name: github-pages  # Artifactの名前を指定
@@ -54,6 +60,6 @@ jobs:
     environment:
       name: github-pages
     steps:
-      - uses: actions/deploy-pages@v2
+      - uses: actions/deploy-pages@v3
         with:
           artifact_name: github-pages  # Artifactの名前を参照
