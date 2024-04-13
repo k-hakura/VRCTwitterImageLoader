@@ -13,10 +13,11 @@ $ rye sync
 $ rye run python src/VRCTwitterImageLoader/twitter_image.py
 ```
 
-コード整形にはRUffを採用しています。
 ```shell
-# formatter を実行
-$ rye run ruff format .
-# linter を実行
-$ rye run ruff check . --fix
+# formatterを実行
+$ rye fmt
+# linterを実行
+$ rye lint
+# linterを実行して自動的に修正
+$ rye lint --fix
 ```
