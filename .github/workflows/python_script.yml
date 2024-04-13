@@ -43,6 +43,7 @@ jobs:
       uses: actions/upload-pages-artifact@v3
       with:
         path: src/VRCTwitterImageLoader/pages
+        name: github-pages  # Artifactの名前を指定
 
   deploy:
     needs: run-python-script
@@ -54,3 +55,5 @@ jobs:
       name: github-pages
     steps:
       - uses: actions/deploy-pages@v3
+        with:
+          artifact_name: github-pages  # Artifactの名前を参照
