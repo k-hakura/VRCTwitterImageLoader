@@ -1,30 +1,20 @@
-import csv
 import platform
 import chromedriver_binary_sync
-from scripts.dataloader import count_csv_rows, random_line_numbers
+import pandas as pd
 from scripts.html_render import save_html_as_png
 
 
 # ツイートURLをランダムで抽出
 file_path = "src/VRCTwitterImageLoader/data/urls_orig_date.csv"
-row_count = count_csv_rows(file_path)
 image_num = 10 # 画像取得数
-max_attempts = 100  # 最大試行回数
-attempts = 0
 
-# ユニークなURLの種類の数が規定数になるまで繰り返す
-unique_urls = set()
-while len(unique_urls) < image_num and attempts < max_attempts:
-    attempts += 1
-    selected_lines = random_line_numbers(row_count, image_num)
-    selected_urls = []
+df_urls_date = pd.read_csv(file_path)
+df_urls = df_urls_date.iloc[:,0].dropna().unique()
+df_selected_urls = pd.DataFrame(df_urls).sample(n=image_num, replace=False).sort_index(ascending=True)
+list_selected_urls = df_selected_urls[0].tolist()
 
-    with open(file_path, "r", newline="", encoding="utf-8") as file:
-        reader = csv.reader(file)
-        for line_number, row in enumerate(reader):
-            if line_number in selected_lines and len(row) > 0:
-                selected_urls.append(row[0])
-                unique_urls.add(row[0])
+# URL失効時の確認用ログ
+print(list_selected_urls)
 
 # OSに基づいてChromedriverのパスを設定
 chromedriver_binary_sync.download(download_dir="./src/VRCTwitterImageLoader/chromedriver/")
@@ -34,8 +24,5 @@ if platform.system() == "Windows":
 else:
     chromedriver_path = "./src/VRCTwitterImageLoader/chromedriver/chromedriver"
 
-# URL失効時のログ確認用
-print(selected_urls)
-
 # レンダリング
-save_html_as_png(selected_urls, chromedriver_path)
+save_html_as_png(list_selected_urls, chromedriver_path)
