@@ -63,6 +63,6 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4  # upload-pages-artifact@v3を使う場合はv4必須
         with:
           artifact_name: vrcimages  # Artifactの名前を参照
