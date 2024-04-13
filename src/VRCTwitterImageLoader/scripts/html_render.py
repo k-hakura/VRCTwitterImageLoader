@@ -8,7 +8,9 @@ from scripts.image_url import get_tweet_embedcode
 
 
 def save_html_as_png(
-    converted_urls, chromedriver_path, file_name="src/VRCTwitterImageLoader/temp/tweet.html"
+    converted_urls,
+    chromedriver_path,
+    file_name="src/VRCTwitterImageLoader/temp/tweet.html",
 ):
     for index, render_url in enumerate(converted_urls):
         html_content = get_tweet_embedcode(render_url)
@@ -52,7 +54,9 @@ def save_html_as_png(
         cropped_img = img.crop((left, top, right, bottom))
 
         # 加工後の画像を保存
-        cropped_img.save(f"src/VRCTwitterImageLoader/pages/images/cropped_screenshot_{index}.png")
+        cropped_img.save(
+            f"src/VRCTwitterImageLoader/pages/images/cropped_screenshot_{index}.png"
+        )
 
         # Close the browser
         driver.quit()
