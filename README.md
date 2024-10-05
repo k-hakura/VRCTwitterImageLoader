@@ -14,22 +14,20 @@ https://varyuvrc.github.io/VRCTwitterImageLoader/
 
 # Installation
 
-このプロジェクトは[Rye](https://rye-up.com/)で管理されています。
+このプロジェクトは[uv](https://docs.astral.sh/uv/)で管理されています。
 
 ```shell
 $ git clone https://github.com/VarYUvrc/VRCTwitterImageLoader.git
 $ cd VRCTwitterImageLoader
-$ rye sync
+$ uv sync
 
 # local実行テスト
-$ rye run python src/VRCTwitterImageLoader/twitter_image.py
+$ uv run python src/VRCTwitterImageLoader/twitter_image.py
 ```
 
 ```shell
 # formatterを実行
-$ rye fmt
+$ uv run ruff format
 # linterを実行
-$ rye lint
-# linterを実行して自動的に修正
-$ rye lint --fix
+$ uv run ruff check --fix
 ```

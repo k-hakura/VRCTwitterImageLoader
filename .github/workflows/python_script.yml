@@ -13,16 +13,12 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
 
-    - name: Install Rye
-      uses: baptiste0928/cargo-install@v3
-      with:
-        crate: rye
-        git: https://github.com/astral-sh/rye
-        branch: main
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
 
     - name: Install Dependencies
       run: |
-        rye sync
+        uv sync --no-dev
 
     - name: Install Chrome
       run: |
@@ -37,7 +33,7 @@ jobs:
 
     - name: Run Python Script
       run: |
-        rye run python src/VRCTwitterImageLoader/twitter_image.py
+        uv run python src/VRCTwitterImageLoader/twitter_image.py
 
     - name: Fix permissions  # deployでArtifactを読み込むために必要
       run: |
