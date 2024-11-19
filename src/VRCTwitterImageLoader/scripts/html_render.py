@@ -1,64 +1,58 @@
-import time
 import os
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from PIL import Image
-from io import BytesIO
+from playwright.sync_api import sync_playwright
 from scripts.image_url import get_tweet_embedcode
 
 
 def save_html_as_png(
-    converted_urls,
-    chromedriver_path,
-    file_name="src/VRCTwitterImageLoader/temp/tweet.html",
+    converted_urls, file_name="src/VRCTwitterImageLoader/temp/tweet.html"
 ):
-    for index, render_url in enumerate(converted_urls):
-        html_content = get_tweet_embedcode(render_url)
+    """
+    ツイート埋め込みHTMLをレンダリングしてPNG形式で保存
+    """
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch(headless=True)
+        context = browser.new_context()
+        page = context.new_page()
 
-        with open(file_name, "w", encoding="utf-8") as file:
-            file.write(html_content)
+        for index, render_url in enumerate(converted_urls):
+            html_content = get_tweet_embedcode(render_url)
 
-        # WebDriverのServiceオブジェクトを作成
-        service = Service(chromedriver_path)
+            if not html_content:
+                continue
 
-        # WebDriver設定（ヘッドレスモードでブラウザを起動）
-        options = webdriver.ChromeOptions()
-        options.add_argument("--headless")
+            # HTMLファイルに保存
+            with open(file_name, "w", encoding="utf-8") as file:
+                file.write(f"""
+                <html>
+                <head>
+                    <script async src="https://platform.twitter.com/widgets.js"></script>
+                </head>
+                <body>
+                    {html_content}
+                </body>
+                </html>
+                """)
 
-        driver = webdriver.Chrome(service=service, options=options)
+            # ローカルHTMLファイルを読み込む
+            local_url = "file://" + os.path.abspath(file_name)
+            page.goto(local_url, wait_until="networkidle")
 
-        # Open the local HTML file
-        local_url = "file://" + os.path.abspath(file_name)
-        driver.get(local_url)
+            # JavaScriptが完全に実行されるまで待機
+            page.wait_for_timeout(3000)  # 3秒待機
 
-        # ウィンドウサイズ設定
-        driver.set_window_size(400, 1600)
+            # ページサイズを動的に調整
+            page.set_viewport_size({"width": 512, "height": 768})
 
-        # Give some time for the tweet to load completely
-        time.sleep(20)
+            # JavaScriptが完全に実行されるまで待機
+            page.wait_for_timeout(10000)  # 10秒待機
 
-        # スクリーンショットをPNG形式のバイナリデータとして取得
-        screenshot_png = driver.get_screenshot_as_png()
+            # スクリーンショットを保存
+            screenshot_path = (
+                f"src/VRCTwitterImageLoader/pages/images/screenshot_{index}.png"
+            )
+            page.screenshot(path=screenshot_path, full_page=True)
 
-        # バイナリデータからPIL.Imageオブジェクトを生成
-        img = Image.open(BytesIO(screenshot_png))
+            print(f"Screenshot saved to {screenshot_path}")
 
-        # 画像のサイズ取得
-        width, height = img.size
-
-        # 下のピクセルをカット
-        left = 0
-        top = 0
-        right = width
-        bottom = height - 800
-        cropped_img = img.crop((left, top, right, bottom))
-
-        # 加工後の画像を保存
-        cropped_img.save(
-            f"src/VRCTwitterImageLoader/pages/images/cropped_screenshot_{index}.png"
-        )
-
-        # Close the browser
-        driver.quit()
-
-    return
+        # ブラウザを閉じる
+        browser.close()
