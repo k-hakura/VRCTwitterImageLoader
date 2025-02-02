@@ -11,9 +11,10 @@ Xの投稿をリストに収集する頻度と一回当たりの収集数は、X
 使用例：https://x.com/Ring_Say_rip/status/1731264158828753358
 - ワールド制作の知識が必要です。Image Loadingについて: [Image Loading | VRChat](https://creators.vrchat.com/worlds/udon/image-loading/)
 - Udon SharpでImage Loadingを実装する一例として、namanonamako 氏のアセット [【無料】WebPhotoStand【VRChat】](https://namanonamako.booth.pm/items/4702922)がおすすめです。
+- 適切にUdonの同期処理を行うことで、インスタンス内のユーザー全員で同じ画像を鑑賞することが可能です。
 
 ランダムではなく新着順に投稿を選ぶことも可能です。
-- [twitter_image.py](src/VRCTwitterImageLoader/twitter_image.py)の中身をコメントアウトすることで[ランダム/新着]を選択
+- [twitter_image.py](src/VRCTwitterImageLoader/twitter_image.py)の中身をコメントアウトすることで[ランダム/新着]を選択できます。
 
 ## 使い方
 
