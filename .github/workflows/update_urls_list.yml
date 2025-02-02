@@ -46,6 +46,6 @@ jobs:
           This pull request updates the Twitter data CSV file with new tweets.
           - Automated update from GitHub Actions.
         commit-message: "Update Twitter data CSV file"
-        base: "main"
+        base: "master"
         delete-branch: true
         labels: "automated update"
