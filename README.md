@@ -1,10 +1,18 @@
 # VRCTwitterImageLoader
 
-X (Twitter)の投稿のうち特定のハッシュタグの投稿を画像としてGitHub Pagesに自動で配信し、日替わりランダムで変更するリポジトリです。
+X (Twitter)の投稿のうち、特定のハッシュタグの投稿をリストにまとめ、そのリストから日替わりランダムで任意の数の投稿を選び、GitHub Pagesに画像として自動で配信するプログラムです。
 
-このGitHub Pagesの画像URLは固定のため、例えばVRChatのImage Loaderの仕組みと組み合わせることで、ワールド内でXの投稿を眺めることが可能です。
+このGitHub Pagesの画像URLは固定のため、例えばVRChatのImage Loadingの仕組みと組み合わせることで、ワールド内でXの投稿を眺めることが可能です。
+
+**すべての動作はGitHub上で完結しているため、サーバを個人で建てる必要がありません。**
+
+Xの投稿をリストに収集する頻度と収集数は、Xの開発者アカウントのグレードに依存します。2025年2月現在、無料プランは100回/月に制限されています。
 
 使用例：https://x.com/Ring_Say_rip/status/1731264158828753358
+- ワールド制作の知識が必要です。Image Loadingについて: [Image Loading | VRChat](https://creators.vrchat.com/worlds/udon/image-loading/)
+
+ランダムではなく新着順に投稿を選ぶことも可能です。
+- [twitter_image.py](src/VRCTwitterImageLoader/twitter_image.py)の中身をコメントアウトすることで[ランダム/新着]を選択
 
 ## 使い方
 
@@ -24,7 +32,8 @@ X (Twitter)の投稿のうち特定のハッシュタグの投稿を画像とし
     - https://{アカウント名}.github.io/VRCTwitterImageLoader/images/screenshot_2.png
     - ...
     - https://{アカウント名}.github.io/VRCTwitterImageLoader/images/screenshot_9.png
-        - 画像URL自体は固定です。画像一覧のサンプル: https://varyuvrc.github.io/VRCTwitterImageLoader/
+        - 画像はスクリプト実行ごとに上書き変更されますが、画像URLは常に固定です。画像一覧のサンプル: https://varyuvrc.github.io/VRCTwitterImageLoader/
+        - 画像数を変更したい場合は、[twitter_image.py](src/VRCTwitterImageLoader/twitter_image.py)の`image_num`の値と、[index.html](src/VRCTwitterImageLoader/pages/index.html)の中身を変更してください。
 1. 定時実行を待たずに`.github/workflows`内のCI/CD`スクリプトをGitHub Webページ上で手動実行することも可能です。
 1. VRChat UdonのImageLoaderを使用して上記URLから画像を取得することで、ワールド内で動的に更新されるテクスチャとして自由に扱うことができます。画像サイズは 512 x 768 pxです。
 1. 7.「`urls_orig_date.csv`の中身の更新」は勝手には行われず、masterブランチへのPull Requestで通知されます。内容に問題がなければMergeしてください。

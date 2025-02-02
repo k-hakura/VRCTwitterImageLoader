@@ -26,10 +26,6 @@ def ensure_data_directory_exists(csv_file_path: str) -> None:
 def extract_tweet_id(url: str) -> str:
     """URLからツイートID（数値部分）を抽出する.
 
-    例:
-        - https://twitter.com/i/web/status/1885732625664590052 -> 1885732625664590052
-        - https://x.com/H5T42/status/1885732625664590052 -> 1885732625664590052
-
     Args:
         url (str): ツイートのURL.
 
