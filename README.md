@@ -18,11 +18,12 @@ Xの投稿をリストに収集する頻度と収集数は、Xの開発者アカ
 
 ### GitHub Actionsを用いた完全自動化
 1. このプロジェクトをご自身のGitHubプロジェクトとしてForkしてください。
-1. `src/VRCTwitterImageLoader/data/urls_orig_date.csv`の要素を空にしてヘッダーだけにし、動作確認のためにURLと日時を10パターン以上記入してください。
-1. `src/VRCTwitterImageLoader/x_auto_get_post_urls.py`内の変数`x_hash_tag_str`を任意のハッシュタグに変更してください。
-1. X開発者ページにログイン(Freeアカウントでも可)し、BEARER TOKENを発行してください。
-1. GitHub ActionsのRepository Secretsに`X_BEARER_TOKEN`というKeyで3.で発行したTokenの値を保存してください。
-1. リポジトリの「Settings」→「Actions」→「General」に移動
+1. [urls_orig_date.csv](src/VRCTwitterImageLoader/data/urls_orig_date.csv)の要素を空にしてヘッダーだけにし、動作確認のためにURLと日時を10パターン以上記入してください。
+1. [x_auto_get_post_urls.py](src/VRCTwitterImageLoader/x_auto_get_post_urls.py)内の変数`x_hash_tag_str`を任意のハッシュタグに変更してください。
+1. [X開発者ページ](https://developer.twitter.com/en/portal/dashboard)にログイン(Freeアカウントでも可)し、BEARER TOKENを発行してください。
+1. GitHub ActionsのRepository Secretsに`X_BEARER_TOKEN`というKeyで、4.で発行したTokenの値を保存してください。
+1. 下記の操作で、リポジトリのGitHub ActionsにPull Requestの権限を付与してください。
+    - 「Settings」→「Actions」→「General」に移動
     - 「Workflow permissions」セクションで以下を設定:
     - Read and write permissionsを選択
     - Allow GitHub Actions to create and approve pull requestsにチェック
@@ -36,7 +37,7 @@ Xの投稿をリストに収集する頻度と収集数は、Xの開発者アカ
         - 画像数を変更したい場合は、[twitter_image.py](src/VRCTwitterImageLoader/twitter_image.py)の`image_num`の値と、[index.html](src/VRCTwitterImageLoader/pages/index.html)の中身を変更してください。
 1. 定時実行を待たずに`.github/workflows`内のCI/CD`スクリプトをGitHub Webページ上で手動実行することも可能です。
 1. VRChat UdonのImageLoaderを使用して上記URLから画像を取得することで、ワールド内で動的に更新されるテクスチャとして自由に扱うことができます。画像サイズは 512 x 768 pxです。
-1. 7.「`urls_orig_date.csv`の中身の更新」は勝手には行われず、masterブランチへのPull Requestで通知されます。内容に問題がなければMergeしてください。
+1. 「`urls_orig_date.csv`の中身の更新」は勝手には行われず、masterブランチへのPull Requestで通知されます。内容に問題がなければMergeしてください。
 
 ### ローカルで動作確認（GitHub Pagesへの画像アップロードは実行されません）
 このプロジェクトは[uv](https://docs.astral.sh/uv/)で管理されています。事前にインストールしてください。
