@@ -1,4 +1,4 @@
-name: Python Script Execution
+name: Upload Random Images
 
 on:
   workflow_dispatch:  # 手動実行用のトリガー
