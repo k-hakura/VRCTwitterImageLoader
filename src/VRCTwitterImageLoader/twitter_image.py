@@ -15,6 +15,7 @@ df_selected_urls = (
 list_selected_urls = df_selected_urls[0].tolist()
 
 # URL失効時の確認用ログ
+print("取得したツイートURL:")
 print(list_selected_urls)
 
 # # OSに基づいてChromedriverのパスを設定
