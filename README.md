@@ -25,16 +25,16 @@ Xの投稿をリストに収集する頻度と一回当たりの収集数は、X
 1. [X開発者ページ](https://developer.twitter.com/en/portal/dashboard)にログイン(Freeアカウントでも可)し、BEARER TOKENを発行してください。
 1. GitHub ActionsのRepository Secretsに`X_BEARER_TOKEN`というKeyで、4.で発行したTokenの値を保存してください。
 1. 下記の操作で、リポジトリのGitHub ActionsにPull Requestの権限を付与してください。
-    - 「Settings」→「Actions」→「General」に移動
-    - 「Workflow permissions」セクションで以下を設定:
-    - Read and write permissionsを選択
-    - Allow GitHub Actions to create and approve pull requestsにチェック
+    - 「Settings」→「Actions」→「General」→ Workflow permissions」セクションで以下を設定:
+        - "Read and write permissions"を選択
+        - "Allow GitHub Actions to create and approve pull requests"にチェック
 1. ここまでの変更をmasterブランチにpushすれば完了です。初期設定では、毎週2回水曜と土曜の3:00に[urls_orig_date.csv](src/VRCTwitterImageLoader/data/urls_orig_date.csv)の中身が更新され、毎日4:00にその中からランダムで10件の投稿が下記のURLに配信されます。
     - https://{GitHubアカウント名}.github.io/VRCTwitterImageLoader/images/screenshot_0.png
     - https://{GitHubアカウント名}.github.io/VRCTwitterImageLoader/images/screenshot_1.png
     - https://{GitHubアカウント名}.github.io/VRCTwitterImageLoader/images/screenshot_2.png
     - ...
     - https://{GitHubアカウント名}.github.io/VRCTwitterImageLoader/images/screenshot_9.png
+
         - 画像はスクリプト実行ごとに上書き変更されますが、画像URLは常に固定です。
             - 画像一覧のサンプル: https://varyuvrc.github.io/VRCTwitterImageLoader/
         - 画像数を変更したい場合は、[twitter_image.py](src/VRCTwitterImageLoader/twitter_image.py)の`image_num`の値と、[index.html](src/VRCTwitterImageLoader/pages/index.html)の中身を変更してください。
