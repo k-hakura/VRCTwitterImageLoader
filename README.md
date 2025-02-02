@@ -1,6 +1,6 @@
 # VRCTwitterImageLoader
 
-X (Twitter)の投稿のうち、特定のハッシュタグの投稿をリストにまとめ、そのリストから日替わりランダムで任意の数の投稿を選び、GitHub Pagesに画像として自動で配信するプログラムです。
+X (Twitter)の投稿のうち、特定のハッシュタグの投稿をリストにまとめ、そのリストから任意の数の投稿を選び、GitHub Pagesに画像として自動で配信するプログラムです。
 
 このGitHub Pagesの画像URLは固定のため、例えばVRChatのImage Loadingの仕組みと組み合わせることで、ワールド内でXの投稿を眺めることが可能です。
 
@@ -15,6 +15,11 @@ Xの投稿をリストに収集する頻度と一回当たりの収集数は、X
 
 ランダムではなく新着順に投稿を選ぶことも可能です。
 - [twitter_image.py](src/VRCTwitterImageLoader/twitter_image.py)の中身をコメントアウトすることで[ランダム/新着]を選択できます。
+
+画像の差し替え頻度は初期設定では1日一回（日替わり）ですが、もっと短いスパンに変更することも可能です。
+- [upload_randam_images.yml](.github/workflows/upload_randam_images.yml)の`schedule:`のcronを書き換えることで、例えば3時間ごとの更新にもできます。
+    - 2025年2月現在、GitHub無料アカウントはGitHub Actionsの実行時間が2000分/月に制限されています。
+    - このCI/CDの実行時間は3分程度のため、GitHub無料アカウントにおける最短実行間隔は約50分に1回だと考えられます。
 
 ## 使い方
 
