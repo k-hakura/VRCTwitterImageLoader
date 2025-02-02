@@ -34,6 +34,7 @@ X (Twitter)の投稿のうち、特定のハッシュタグの投稿をリスト
 
 Xの投稿をリストに収集する頻度と一回当たりの収集数は、Xの開発者アカウントのグレードに依存します。
 - 2025年2月現在、無料アカウントは100回&50件/月に制限されています。
+- [update_urls_list.yml](.github/workflows/update_urls_list.yml)の`schedule:`のcronと、[x_auto_get_post_urls.py](src/VRCTwitterImageLoader/x_auto_get_post_urls.py)の`n_days`と`max_results`を書き換えることで頻度と収集数を調整できますが、前述の制限により無料アカウントではほとんど増やすことができません。
 
 ## 使い方
 
