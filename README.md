@@ -23,6 +23,7 @@ X (Twitter)の投稿のうち特定のハッシュタグの投稿を画像とし
 画像URL自体は固定です。画像一覧のサンプル: https://varyuvrc.github.io/VRCTwitterImageLoader/
 7. 定時実行を待たずに`.github/workflows`内のCI/CD`スクリプトをGitHub Webページ上で手動実行することも可能です。
 8. VRChat UdonのImageLoaderを使用して上記URLから画像を取得することで、ワールド内で動的に更新されるテクスチャとして自由に扱うことができます。画像サイズは 512 x 768 pxです。
+9. 6.の「`urls_orig_date.csv`の中身の更新」は勝手には行われず、masterブランチへのPull Requestで通知されます。内容に問題がなければMergeしてください。
 
 ### ローカルで動作確認（GitHub Pagesへの画像アップロードは実行されません）
 このプロジェクトは[uv](https://docs.astral.sh/uv/)で管理されています。事前にインストールしてください。
@@ -58,3 +59,6 @@ $ uv run ruff check --fix
 
 ## 既知のバグ
 画像のレンダリングが失敗した状態で保存されてしまう場合があります。現在は失敗時に3回まで再トライするようになっています。
+
+## その他
+不具合報告などの手順は[CONTRIBUTING](CONTRIBUTING.md)をご確認ください。
