@@ -38,7 +38,7 @@ Xの投稿をリストに収集する頻度と収集数は、Xの開発者アカ
         - 画像はスクリプト実行ごとに上書き変更されますが、画像URLは常に固定です。
             - 画像一覧のサンプル: https://varyuvrc.github.io/VRCTwitterImageLoader/
         - 画像数を変更したい場合は、[twitter_image.py](src/VRCTwitterImageLoader/twitter_image.py)の`image_num`の値と、[index.html](src/VRCTwitterImageLoader/pages/index.html)の中身を変更してください。
-1. 定時実行を待たずに[.github/workflows](.github/workflows)内のCI/CDスクリプトをGitHub Webページ上で手動実行することも可能です。
+1. 定時実行を待たずに[.github/workflows](.github/workflows)内のCI/CDスクリプトをGitHub Webの"Actions"ページで手動実行することも可能です。
 1. VRChat UdonのImage Loadingを使用して上記URLから画像を取得することで、ワールド内で毎日更新されるテクスチャとして扱うことができます。画像サイズは 512 x 768 pxです。
 1. 「[urls_orig_date.csv](src/VRCTwitterImageLoader/data/urls_orig_date.csv)の中身の更新」は勝手には行われず、masterブランチへのPull Requestで通知されます。内容に問題がなければMergeしてください。
 
