@@ -18,6 +18,7 @@ Xの投稿をリストに収集する頻度と収集数は、Xの開発者アカ
 ## 使い方
 
 ### GitHub Actionsを用いた完全自動化
+少しの操作が必要です。ほぼGitHubのUI上で行えます。
 1. このプロジェクトをご自身のGitHubプロジェクトとしてForkしてください。
 1. URLリストである[urls_orig_date.csv](src/VRCTwitterImageLoader/data/urls_orig_date.csv)を自身の収集対象のXの投稿のURLに変更してください。動作するためには少なくとも10件の投稿が必要です。
 1. [x_auto_get_post_urls.py](src/VRCTwitterImageLoader/x_auto_get_post_urls.py)内の変数`x_hash_tag_str`を収集対象のハッシュタグに変更してください。
@@ -28,17 +29,18 @@ Xの投稿をリストに収集する頻度と収集数は、Xの開発者アカ
     - 「Workflow permissions」セクションで以下を設定:
     - Read and write permissionsを選択
     - Allow GitHub Actions to create and approve pull requestsにチェック
-1. 変更をpushすれば完了です。初期設定では、毎週土曜3:00に`urls_orig_date.csv`の中身が更新され、毎日4:00にその中からランダムで10件の投稿が下記のURLに配信されます。
-    - https://{アカウント名}.github.io/VRCTwitterImageLoader/images/screenshot_0.png
-    - https://{アカウント名}.github.io/VRCTwitterImageLoader/images/screenshot_1.png
-    - https://{アカウント名}.github.io/VRCTwitterImageLoader/images/screenshot_2.png
+1. ここまでの変更をmasterブランチにpushすれば完了です。初期設定では、毎週2回水曜と土曜の3:00に[urls_orig_date.csv](src/VRCTwitterImageLoader/data/urls_orig_date.csv)の中身が更新され、毎日4:00にその中からランダムで10件の投稿が下記のURLに配信されます。
+    - https://{GitHubアカウント名}.github.io/VRCTwitterImageLoader/images/screenshot_0.png
+    - https://{GitHubアカウント名}.github.io/VRCTwitterImageLoader/images/screenshot_1.png
+    - https://{GitHubアカウント名}.github.io/VRCTwitterImageLoader/images/screenshot_2.png
     - ...
-    - https://{アカウント名}.github.io/VRCTwitterImageLoader/images/screenshot_9.png
-        - 画像はスクリプト実行ごとに上書き変更されますが、画像URLは常に固定です。画像一覧のサンプル: https://varyuvrc.github.io/VRCTwitterImageLoader/
+    - https://{GitHubアカウント名}.github.io/VRCTwitterImageLoader/images/screenshot_9.png
+        - 画像はスクリプト実行ごとに上書き変更されますが、画像URLは常に固定です。
+            - 画像一覧のサンプル: https://varyuvrc.github.io/VRCTwitterImageLoader/
         - 画像数を変更したい場合は、[twitter_image.py](src/VRCTwitterImageLoader/twitter_image.py)の`image_num`の値と、[index.html](src/VRCTwitterImageLoader/pages/index.html)の中身を変更してください。
-1. 定時実行を待たずに`.github/workflows`内のCI/CD`スクリプトをGitHub Webページ上で手動実行することも可能です。
-1. VRChat UdonのImageLoaderを使用して上記URLから画像を取得することで、ワールド内で動的に更新されるテクスチャとして自由に扱うことができます。画像サイズは 512 x 768 pxです。
-1. 「`urls_orig_date.csv`の中身の更新」は勝手には行われず、masterブランチへのPull Requestで通知されます。内容に問題がなければMergeしてください。
+1. 定時実行を待たずに[.github/workflows](.github/workflows)内のCI/CDスクリプトをGitHub Webページ上で手動実行することも可能です。
+1. VRChat UdonのImage Loadingを使用して上記URLから画像を取得することで、ワールド内で毎日更新されるテクスチャとして扱うことができます。画像サイズは 512 x 768 pxです。
+1. 「[urls_orig_date.csv](src/VRCTwitterImageLoader/data/urls_orig_date.csv)の中身の更新」は勝手には行われず、masterブランチへのPull Requestで通知されます。内容に問題がなければMergeしてください。
 
 ### ローカルで動作確認
 **-----基本的にこれより下の操作を行う必要はありません。-----** 
@@ -55,7 +57,7 @@ Xの投稿をリストに収集する頻度と収集数は、Xの開発者アカ
 このプロジェクトはパッケージマネージャ[uv](https://docs.astral.sh/uv/)で管理されています。事前にインストールしてください。
 
 ```shell
-$ git clone https://github.com/VarYUvrc/VRCTwitterImageLoader.git
+$ git clone {ForkしたリポジトリのURL}.git
 $ cd VRCTwitterImageLoader
 $ uv sync
 
