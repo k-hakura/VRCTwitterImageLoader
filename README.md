@@ -1,17 +1,28 @@
 # VRCTwitterImageLoader
 
-X (Twitter)の投稿のうち、特定のハッシュタグの投稿をリストにまとめ、そのリストから任意の数の投稿を選び、GitHub Pagesに画像として自動で配信するプログラムです。
+X (Twitter)の投稿のうち、特定のハッシュタグの投稿をリストにまとめ、そのリストから任意の数の投稿を選び、GitHub Pagesに画像として自動で配信するシステムです。
 
 このGitHub Pagesの画像URLは固定のため、例えばVRChatのImage Loadingの仕組みと組み合わせることで、ワールド内でXの投稿を眺めることが可能です。
 
 **すべての動作はGitHub上で完結しているため、サーバを個人で建てる必要がありません。**
 
-Xの投稿をリストに収集する頻度と一回当たりの収集数は、Xの開発者アカウントのグレードに依存します。2025年2月現在、無料アカウントは100回/月に制限されています。
+**2025年2月現在、無料ですべてのプログラムが動作します。**
 
 使用例：https://x.com/Ring_Say_rip/status/1731264158828753358
-- ワールド制作の知識が必要です。Image Loadingについて: [Image Loading | VRChat](https://creators.vrchat.com/worlds/udon/image-loading/)
-- Udon SharpでImage Loadingを実装する一例として、namanonamako 氏のアセット [【無料】WebPhotoStand【VRChat】](https://namanonamako.booth.pm/items/4702922)がおすすめです。
+- VRChatでこのシステムの画像を読み込むのは簡単ですが、前提としてワールド制作の知識が必要です。
+    - Image Loadingについて: [Image Loading | VRChat](https://creators.vrchat.com/worlds/udon/image-loading/)
+    - Udon SharpでImage Loadingを実装する一例として、namanonamako 氏のアセット [【無料】WebPhotoStand【VRChat】](https://namanonamako.booth.pm/items/4702922)がおすすめです。
 - 適切にUdonの同期処理を行うことで、インスタンス内のユーザー全員で同じ画像を鑑賞することが可能です。
+
+## 必要なもの
+どちらも無料アカウントで構いません（ただし実行頻度の上限がそれぞれ存在します）。
+- GitHubアカウント
+    - 設定ファイルの変更と定期実行を行うために必要です。
+- Xアカウント
+    - X開発者アカウント(後述)を発行するために必要です
+
+
+## オプション
 
 ランダムではなく新着順に投稿を選ぶことも可能です。
 - [twitter_image.py](src/VRCTwitterImageLoader/twitter_image.py)の中身をコメントアウトすることで[ランダム/新着]を選択できます。
@@ -20,6 +31,9 @@ Xの投稿をリストに収集する頻度と一回当たりの収集数は、X
 - [upload_randam_images.yml](.github/workflows/upload_randam_images.yml)の`schedule:`のcronを書き換えることで、例えば3時間ごとの更新にもできます。
     - 2025年2月現在、GitHub無料アカウントはGitHub Actionsの実行時間が2000分/月に制限されています。
     - このCI/CDの実行時間は3分程度のため、GitHub無料アカウントにおける最短実行間隔は約50分に1回だと考えられます。
+
+Xの投稿をリストに収集する頻度と一回当たりの収集数は、Xの開発者アカウントのグレードに依存します。
+- 2025年2月現在、無料アカウントは100回&50件/月に制限されています。
 
 ## 使い方
 
