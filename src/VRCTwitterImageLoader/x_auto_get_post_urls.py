@@ -11,8 +11,6 @@ from typing import Tuple, Dict, Any, List
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # スクリプトのディレクトリ
 CSV_FILE_PATH = os.path.join(BASE_DIR, "data", "urls_orig_date.csv")
 
-x_hash_tag_str = "#2024年9月VRC同期会写真部"
-
 def ensure_data_directory_exists(csv_file_path: str) -> None:
     """CSVファイルのディレクトリが存在しない場合は作成する
 
@@ -250,7 +248,7 @@ if __name__ == "__main__":
         raise Exception("環境変数 X_BEARER_TOKEN が設定されていません。")
 
     # 各種パラメータの設定
-    x_hash_tag_str = "#Quest散歩"
+    x_hash_tag_str = "#2024年9月VRC同期会写真部"
     n_days = 5
     max_results = 30
 
